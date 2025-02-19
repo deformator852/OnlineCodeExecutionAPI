@@ -2,16 +2,18 @@ from dataclasses import dataclass
 
 
 @dataclass
+class AnalyzerResult:
+    status: bool
+    result: dict[str, list] | None = None
+
+
+@dataclass
 class ExecutorResultMetaData:
-    execution_time: str
-    output_result: str
+    execution_time: float
+    output_result: dict | str
 
 
 @dataclass
 class ExecutorResult:
     execution_status: bool
     meta_data: ExecutorResultMetaData
-
-
-@dataclass
-class AnalyzerResult: ...
