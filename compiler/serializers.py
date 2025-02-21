@@ -1,7 +1,5 @@
 from rest_framework import serializers
 
-from compiler.languages.types import ExecutorResultMetaData
-
 
 class ExecutorResultMetaDataSerializer(serializers.Serializer):
     execution_time = serializers.CharField()

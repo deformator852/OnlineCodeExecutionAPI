@@ -3,7 +3,6 @@ from dataclasses import dataclass
 
 @dataclass
 class AnalyzerResult:
-    status: bool
     result: dict[str, list] | None = None
 
 

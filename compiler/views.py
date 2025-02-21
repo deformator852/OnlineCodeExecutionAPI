@@ -9,9 +9,8 @@ class PythonCodeAPI(APIView):
     def post(self, request):
         code_serializer = CodeSerializer(data=request.data)
         if code_serializer.is_valid():
-            code = code_serializer.validated_data.get("code")
+            code = code_serializer.validated_data.get("code", "")  # type: ignore
             execution_result: ExecutorResult = PythonExecutor().execute(code)
             execution_result_serializer = ExecutorResultSerializer(execution_result)
             return Response(execution_result_serializer.data)
-        else:
-            return Response(code_serializer.errors, status=400)
+        return Response(code_serializer.errors, status=400)
